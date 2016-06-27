@@ -8,7 +8,7 @@ namespace TBGame
 {
     class Program
     {
-        static Room currentRoom;
+        static public Room currentRoom;
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome");
@@ -21,6 +21,9 @@ namespace TBGame
             Console.WriteLine("This is "+ user.name+", doesn't " +user.pronoun +" look fabulous today?");
 
             Room room0 = new Room("It is a 30 square meter room with red walls.");
+            Room room1 = new Room("It is a 40 square meter room with green walls.");
+            Room room2 = new Room("It is a 50 square meter room with blue walls.");
+            room0.neighborrooms.Add("hall", room2);
 
             currentRoom = room0;
             while (true)
