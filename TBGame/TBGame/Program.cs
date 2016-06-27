@@ -8,6 +8,7 @@ namespace TBGame
 {
     class Program
     {
+        static Room currentRoom;
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome");
@@ -18,9 +19,28 @@ namespace TBGame
             string pronoun = Console.ReadLine();
             Character user = new Character(username,pronoun);
             Console.WriteLine("This is "+ user.name+", doesn't " +user.pronoun +" look fabulous today?");
+
+            Room room0 = new Room("It is a 30 square meter room with red walls.");
+
+            currentRoom = room0;
+            while (true)
+            {
+                string[] command = Console.ReadLine().Split(' ');
+                Getcommand(command);
+                
+            }
             
 
-            Console.ReadLine();
+        }
+        static void Getcommand(string[] args)
+        {
+            if (args[0]== "exit") {
+                Environment.Exit(0);
+            }
+            else if (!currentRoom.GetCommand(args))
+            {
+                Console.WriteLine("This is not a valid command! Try again.");
+            }
 
         }
     }
