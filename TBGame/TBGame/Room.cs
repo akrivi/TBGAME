@@ -22,7 +22,7 @@ namespace TBGame
                 Console.WriteLine("The room looks like");
                 Console.WriteLine(description);
                 Console.WriteLine("The rooms you can visit from here are:");
-                Console.WriteLine(String.Join(", ", neighborrooms.Keys));
+                Console.WriteLine(String.Join(", ", neighborrooms.Keys.ToArray()));
                 return true;
             }
             else if (a[0] == "go"&& a.Length==2 && neighborrooms.ContainsKey(a[1]))
