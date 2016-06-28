@@ -25,12 +25,26 @@ namespace TBGame
                 Console.WriteLine(String.Join(", ", neighborrooms.Keys.ToArray()));
                 return true;
             }
-            else if (a[0] == "go"&& a.Length==2 && neighborrooms.ContainsKey(a[1]))
+            else if (a[0] == "go")
             {
-                string roomname = a[1];
-                Room newroom = neighborrooms[roomname];
-                Program.currentRoom = newroom;
+                try
+                {
+                    string roomname = a[1];
+                    Room newroom = neighborrooms[roomname];
+                    Program.currentRoom = newroom;
+                    Console.WriteLine("You enter " + roomname + " and look around.");
+                    GetCommand(new[]{"look"});
+                }
+                catch (KeyNotFoundException e)
+                {
+                    Console.WriteLine("That room does not exist");
+                }
+                catch (IndexOutOfRangeException e)
+                {
+                    Console.WriteLine("Specify a room: go <room>");
+                }
                 return true;
+
             }
             return false;
         }
