@@ -37,7 +37,9 @@ namespace TBGame
             character0.questions = new Questions(null, new Dictionary<string, Questions>{
                 { "How are you?", new Questions("fine, you?",
                     new Dictionary<string, Questions> {
+                        {"I'm great, but have you seen Bob?", new Questions("He's in the other room", new Dictionary<string, Questions>()) }
                     }) },
+                { "What is the answer?", new Questions("Nothing", new Dictionary<string, Questions>()) }
             });
             NPC character1 = new NPC("Bob", "he");
             room0.roompeople.Add("Alice", character0);
