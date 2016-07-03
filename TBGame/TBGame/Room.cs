@@ -71,12 +71,20 @@ namespace TBGame
                 {
                     string charactername = String.Join(" ", a.Skip(1));
                     NPC p = roompeople[charactername];
-                    foreach (var q in p.questions)
+                    Questions questions = p.questions;
+                    while (questions.Count > 0)
                     {
-                        Console.WriteLine(q.Key + ": " + q.Value);
+                        int i = 0;
+                        foreach (var question in questions)
+                        {
+                            i++;
+                            Console.WriteLine(i.ToString() + ") " + question.Key);
+                        }
+                        int key = Int32.Parse(Console.ReadLine());
+                        Questions q = questions[questions.Keys.ToArray()[key-1]];
+                        Console.WriteLine(q.answer);
+                        questions = q;
                     }
-                    string key = Console.ReadLine();
-                    Console.WriteLine(p.answers[key]);
                 }
                 catch (KeyNotFoundException e)
                 {

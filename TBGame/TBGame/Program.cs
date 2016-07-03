@@ -34,9 +34,11 @@ namespace TBGame
             room2.roomitems.Add("right sock", rightsock);
 
             NPC character0 = new NPC("Alice","she");
-            character0.questions.Add("A", "How are you?");
-            character0.questions.Add("B", "What year is it?");
-            character0.questions.Add("C", "How am I?");
+            character0.questions = new Questions(null, new Dictionary<string, Questions>{
+                { "How are you?", new Questions("fine, you?",
+                    new Dictionary<string, Questions> {
+                    }) },
+            });
             NPC character1 = new NPC("Bob", "he");
             room0.roompeople.Add("Alice", character0);
             room2.roompeople.Add("Bob", character1);
